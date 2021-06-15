@@ -1,5 +1,5 @@
 # Bridezilla, every bride's dream app 
-This app was built using context API, React hooks, React, RailsAPI 
+This app was built using context API, React hooks, React, Ruby on RailsAPI 
 
 The front-end will be found inside client
 

@@ -1,5 +1,5 @@
 # Bridezilla, every bride's dream app 
-This app was built using context API, React hooks, React, RailsAPI 
+This app was built using context API, React hooks, React, Ruby on RailsAPI 
 
 ## Introduction
 Bridezilla is an app that allows users to create an account and track every checklist they have to go through along with their bridal team before the big day. This app was just created to demo for Lyft's apprenticeship so it might not have the full functionality an app would have.  
