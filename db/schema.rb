@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_12_214802) do
+ActiveRecord::Schema.define(version: 2021_06_15_023546) do
 
-  create_table "recipes", force: :cascade do |t|
+  create_table "checklists", force: :cascade do |t|
     t.string "title"
     t.integer "user_id"
+    t.float "rating"
     t.text "instructions"
-    t.integer "minutes_to_complete"
+    t.text "due_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

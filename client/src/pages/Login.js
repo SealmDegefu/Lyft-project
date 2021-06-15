@@ -9,14 +9,17 @@ function Login({ onLogin }) {
 
   return (
     <Wrapper>
-      <Logo>Reciplease</Logo>
+      <Logo>
+      BRIDE<span style={{textDecoration: "line-through"}}>zilla</span>
+      <p style={{marginTop: "0px", fontSize: "20px"}}>every bride's dream app</p>
+      </Logo>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
           <Divider />
           <p>
             Don't have an account? &nbsp;
-            <Button color="secondary" onClick={() => setShowLogin(false)}>
+            <Button style={{color: "white", background: "rgb(212,175,55)"}} onClick={() => setShowLogin(false)}>
               Sign Up
             </Button>
           </p>
@@ -27,7 +30,7 @@ function Login({ onLogin }) {
           <Divider />
           <p>
             Already have an account? &nbsp;
-            <Button color="secondary" onClick={() => setShowLogin(true)}>
+            <Button style={{color: "white", background: "rgb(212,175,55)"}} onClick={() => setShowLogin(true)}>
               Log In
             </Button>
           </p>
@@ -40,7 +43,7 @@ function Login({ onLogin }) {
 const Logo = styled.h1`
   font-family: "Permanent Marker", cursive;
   font-size: 3rem;
-  color: deeppink;
+  color: rgb(212,175,55);
   margin: 8px 0 16px;
 `;
 

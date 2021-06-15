@@ -3,41 +3,56 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button } from "../styles";
+import StarRating from './StarRating'
 
-function RecipeList() {
-  const [recipes, setRecipes] = useState([]);
+function RecipeList({ checklist, onUpdatedChecklist, onDeleteChecklist}) {
+  const { id, title, instructions, due_date, rating } = checklist;
 
-  useEffect(() => {
-    fetch("/recipes")
+  function handleUpdateRating(pct) {
+    const newRating = pct * 5;
+
+    console.log(rating)
+    fetch(`/checklists/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ rating: newRating }),
+    })
       .then((r) => r.json())
-      .then(setRecipes);
-  }, []);
+      .then(onUpdatedChecklist);
+  }
 
+  function handleDeleteSpice(id) {
+    fetch(`/checklists/${id}`, {
+      method: "DELETE",
+    }).then((r) => {
+      if (r.ok) {
+        onDeleteChecklist(checklist);
+      }
+    });
+  }
   return (
-    <Wrapper>
-      {recipes.length > 0 ? (
-        recipes.map((recipe) => (
-          <Recipe key={recipe.id}>
+    <div>
+    <Wrapper> 
+          <Checklist key={checklist.id}>
             <Box>
-              <h2>{recipe.title}</h2>
+              <h2>{title}</h2>
               <p>
-                <em>Time to Complete: {recipe.minutesToComplete} minutes</em>
+                <em>Due Date:{due_date}</em>
                 &nbsp;·&nbsp;
-                <cite>By {recipe.user.username}</cite>
+                <cite>By {checklist.user.username}</cite>
               </p>
-              <ReactMarkdown>{recipe.instructions}</ReactMarkdown>
+              <ReactMarkdown>{instructions}</ReactMarkdown>
+              <div>
+             Rating:{" "}
+             <StarRating percentage={rating / 5} onClick={handleUpdateRating} />
+              </div>
+              <button style={{backgroundColor: "rgb(212,175,55)", color: "White", border: "none", padding: "5px"}} onClick={() => handleDeleteSpice(checklist.id)} >Delete</button>
             </Box>
-          </Recipe>
-        ))
-      ) : (
-        <>
-          <h2>No Recipes Found</h2>
-          <Button as={Link} to="/new">
-            Make a New Recipe
-          </Button>
-        </>
-      )}
+          </Checklist>
     </Wrapper>
+      </div>
   );
 }
 
@@ -46,7 +61,7 @@ const Wrapper = styled.section`
   margin: 40px auto;
 `;
 
-const Recipe = styled.article`
+const Checklist = styled.article`
   margin-bottom: 24px;
 `;
 

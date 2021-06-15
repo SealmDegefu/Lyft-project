@@ -1,0 +1,70 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-size: 100%;
+}
+  .timer-container{
+	background-image: url("https://media.istockphoto.com/photos/stylized-delicate-background-with-small-flowers-picture-id1136461807?k=6&m=1136461807&s=612x612&w=0&h=rHu0gt2r_4ChtCYm9ZsjGFMx4FNDBgmI7WYfp3R0H4Y=");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: rgb(212,175,55);;
+	width: 100vw;
+	height: 100vh;
+  }
+  .timer{
+	  background-color: rgba(216, 210, 185, 0.5);
+	  /* display: flex; */
+	  flex: column;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 7em;
+	padding-top: 2em;
+	width: 100%;
+	height: 100%;
+	}
+
+	.timer div:first-child {
+		text-align: center;
+	}
+	.material-icons{
+		font-size: 8em;
+		color: rgb(212,175,55);
+	}
+ 
+	h2{
+		font-size: 40px;
+		font-family: "Permanent Marker", cursive;
+		font-weight: 600;
+		margin-bottom: 0.5em;
+	
+	}
+
+	.timer div:first-child p{
+		color: rgb(212,175,55);
+	}
+
+	.timer div:last-child{
+		border: 1px solid white;
+		border-radius: 5px;
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		margin-top: 3em;
+		padding: 3em;
+		text-align: center;
+	}
+
+	section p:first-child, .timer div:last-child span {
+		font-size: 3em;
+	}
+
+	@media screen and (max-width: 480px){
+		.timer div:last-child {
+			margin-left: 2em;
+			margin-right: 2em;
+			padding: 3em 1em;
+		}
+	}
